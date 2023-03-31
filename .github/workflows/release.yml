@@ -1,5 +1,4 @@
 name: Deploy to GitHub Releases
-permissions:
 on:
   push:
     branches: [ master ]
