@@ -1,5 +1,5 @@
 name: Deploy to GitHub Releases
-
+permissions:
 on:
   push:
     branches: [ master ]
@@ -74,6 +74,9 @@ jobs:
     if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
 
       # Check out current repository
