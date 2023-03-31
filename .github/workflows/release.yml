@@ -45,7 +45,7 @@ jobs:
           
           sl=$(grep -n '## \[' CHANGELOG.md | awk -F ':' 'NR == 1  { print $1-1 }')
           el=$(grep -n '## \[' CHANGELOG.md | awk -F ':' 'NR == 2  { print $1 }')
-          ${el:$(awk 'END{print NR}' CHANGELOG.md)}
+          el=${el:=$(awk 'END{print NR}' $file)}
           
           echo "changelog<<EOF" >> $GITHUB_OUTPUT
           awk "NR > $sl && NR < $el" CHANGELOG.md | while IFS=$'\r\n' read -r line; do
